@@ -133,6 +133,7 @@ func (r aroundOpFunc) ExtensionName() string {
 }
 
 func (r aroundOpFunc) Validate(schema graphql.ExecutableSchema) error {
+	fmt.Println("called func (r aroundOpFunc) Validate(schema graphql.ExecutableSchema) error {")
 	if r == nil {
 		return fmt.Errorf("OperationFunc can not be nil")
 	}
@@ -140,6 +141,7 @@ func (r aroundOpFunc) Validate(schema graphql.ExecutableSchema) error {
 }
 
 func (r aroundOpFunc) InterceptOperation(ctx context.Context, next graphql.OperationHandler) graphql.ResponseHandler {
+	fmt.Println("called func (r aroundOpFunc) InterceptOperation(ctx context.Context, next graphql.OperationHandler) graphql.ResponseHandler {")
 	return r(ctx, next)
 }
 
@@ -150,6 +152,7 @@ func (r aroundRespFunc) ExtensionName() string {
 }
 
 func (r aroundRespFunc) Validate(schema graphql.ExecutableSchema) error {
+	fmt.Println("called func (r aroundRespFunc) Validate(schema graphql.ExecutableSchema) error {")
 	if r == nil {
 		return fmt.Errorf("ResponseFunc can not be nil")
 	}
@@ -157,6 +160,7 @@ func (r aroundRespFunc) Validate(schema graphql.ExecutableSchema) error {
 }
 
 func (r aroundRespFunc) InterceptResponse(ctx context.Context, next graphql.ResponseHandler) *graphql.Response {
+	fmt.Println("called func (r aroundRespFunc) InterceptResponse(ctx context.Context, next graphql.ResponseHandler) *graphql.Response {")
 	return r(ctx, next)
 }
 
@@ -167,6 +171,7 @@ func (f aroundFieldFunc) ExtensionName() string {
 }
 
 func (f aroundFieldFunc) Validate(schema graphql.ExecutableSchema) error {
+	fmt.Println("called func (f aroundFieldFunc) Validate(schema graphql.ExecutableSchema) error {")
 	if f == nil {
 		return fmt.Errorf("FieldFunc can not be nil")
 	}
@@ -174,6 +179,7 @@ func (f aroundFieldFunc) Validate(schema graphql.ExecutableSchema) error {
 }
 
 func (f aroundFieldFunc) InterceptField(ctx context.Context, next graphql.Resolver) (res interface{}, err error) {
+	fmt.Println("called func (f aroundFieldFunc) InterceptField(ctx context.Context, next graphql.Resolver) (res interface{}, err error) {")
 	return f(ctx, next)
 }
 
@@ -191,5 +197,6 @@ func (f aroundRootFieldFunc) Validate(schema graphql.ExecutableSchema) error {
 }
 
 func (f aroundRootFieldFunc) InterceptRootField(ctx context.Context, next graphql.RootResolver) graphql.Marshaler {
+	fmt.Println("called func (f aroundRootFieldFunc) InterceptRootField(ctx context.Context, next graphql.RootResolver) graphql.Marshaler {")
 	return f(ctx, next)
 }
